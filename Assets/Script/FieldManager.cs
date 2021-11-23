@@ -130,10 +130,13 @@ public class FieldManager : MonoBehaviour
         objArray[height, width] = pushedInst;
 
         Sprite[] sprites = Resources.LoadAll<Sprite>("MineSweeper");
-        
+
         switch (bombNum)
         {
             case 0:
+                GameObject num0Prefab = (GameObject)Resources.Load("Num0");
+                Sprite sprite0 = num0Prefab.GetComponent<SpriteRenderer>().sprite;
+                pushedInst.transform.Find("image").GetComponent<SpriteRenderer>().sprite = sprite0;
                 break;
             case 1:
                 pushedInst.transform.Find("image").GetComponent<SpriteRenderer>().sprite = sprites[5];
@@ -160,8 +163,6 @@ public class FieldManager : MonoBehaviour
                 pushedInst.transform.Find("image").GetComponent<SpriteRenderer>().sprite = sprites[12];
                 break;
         }
-        
-        
     }
 
     int CountBomb(int height, int width)
