@@ -15,6 +15,8 @@ public class FieldManager : MonoBehaviour
 
     BlockController blockController;
 
+    bool m_bAlive = true;      // falseでゲームオーバー
+
     // 外壁抜きのサイズ
     const int FIELD_WIDTH = 8;      
     const int FIELD_HEIGHT = 8;
@@ -26,10 +28,15 @@ public class FieldManager : MonoBehaviour
     [SerializeField] int BombNum = 10;
 
     public GameObject[,] objArray;
+    GameObject gameUI;
     
     // Start is called before the first frame update
     void Start()
     {
+        // リザルト用UIを非表示
+        gameUI = GameObject.Find("Canvas");
+        gameUI.SetActive(false);
+
         objArray = new GameObject[ALL_FIELD_HEIGHT, ALL_FIELD_WIDTH];
         if (BombNum >= FIELD_HEIGHT * FIELD_WIDTH - 1)
         {
@@ -53,7 +60,6 @@ public class FieldManager : MonoBehaviour
             int index = Random.Range(0, randomNumList.Count);
             int bombID = randomNumList[index];
             randomNumList.RemoveAt(index);
-            Debug.Log(bombID);
             bombIDList.Add(bombID);
         }
 
@@ -207,5 +213,10 @@ public class FieldManager : MonoBehaviour
             ++bombCounter;
         }
         return bombCounter;
+    }
+
+    public void ShowUI(bool flag)
+    {
+        gameUI.SetActive(flag);
     }
 }

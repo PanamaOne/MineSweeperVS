@@ -11,7 +11,6 @@ public class BlockController : MonoBehaviour
     int m_widthIndex, m_heightIndex;
     bool m_bIsBomb = false;
     int m_nBombCount;
-    //GameObject m_gameObj;
 
     BlockController()
     {
@@ -71,26 +70,26 @@ public class BlockController : MonoBehaviour
 
     public void OnTouchAct()
     {
-        //Debug.Log("Vertical:" + m_widthIndex + "Horizontal" + m_heightIndex);
-
         if (m_bIsBomb)
         {
+
             GameOver();
-
+            return;
         }
-        
 
-        Debug.Log(m_nBombCount);
-
-        GameObject gObj = GameObject.Find("GameObject");
+        GameObject gObj = GameObject.Find("FieldManager");
         FieldManager fManager = gObj.GetComponent<FieldManager>();
         fManager.SwitchPushedColor(m_heightIndex, m_widthIndex, m_nBombCount);
+
+
     }
 
     void GameOver()
     {
         Debug.Log("ドカン！");
-
+        GameObject gameObj = GameObject.Find("FieldManager");
+        FieldManager fManager = gameObj.GetComponent<FieldManager>();
+        fManager.ShowUI(true);
     }
 
     // ゲーム終了後に爆弾を表示する関数
