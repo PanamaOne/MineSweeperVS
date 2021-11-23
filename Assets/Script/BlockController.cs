@@ -91,10 +91,4 @@ public class BlockController : MonoBehaviour
         FieldManager fManager = gameObj.GetComponent<FieldManager>();
         fManager.ShowUI(true);
     }
-
-    // ƒQ[ƒ€I—¹Œã‚É”š’e‚ğ•\¦‚·‚éŠÖ”
-    void ShoeAllBomb()
-    {
-
-    }
 }

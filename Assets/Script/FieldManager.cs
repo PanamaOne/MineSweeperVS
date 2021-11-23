@@ -219,4 +219,9 @@ public class FieldManager : MonoBehaviour
     {
         gameUI.SetActive(flag);
     }
+
+    public void ShowAllBombs()
+    {
+
+    }
 }
